@@ -7,13 +7,31 @@ import com.example.demo.repository.EstudianteRepo;
 import com.example.demo.repository.modelo.Estudiante;
 
 @Service
-public class EstudianteServiceImpl implements EstudianteService{
+public class EstudianteServiceImpl implements EstudianteService {
+	
 	@Autowired
-	EstudianteRepo estudianteRepo;
+	private EstudianteRepo estudianteRepo;
+
 	@Override
-	public void crear(Estudiante estudiante) {
-		// TODO Auto-generated method stub
+	public void insertar(Estudiante estudiante) {
 		this.estudianteRepo.insertar(estudiante);
 	}
 
+	@Override
+	public Estudiante seleccionar(String cedula) {
+		
+		return this.estudianteRepo.buscar(cedula);
+	}
+
+	@Override
+	public void eliminar(String cedula) {
+		this.estudianteRepo.eliminar(cedula);
+		
+	}
+
+	@Override
+	public void modificar(Estudiante estudiante) {
+	this.estudianteRepo.actualizar(estudiante);
+
+	}
 }

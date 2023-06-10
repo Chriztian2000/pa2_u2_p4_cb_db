@@ -21,11 +21,23 @@ public class Pa2U2P4CbDbApplication implements CommandLineRunner {
 	@Override
 	public void run(String... args) throws Exception {
 
-		Estudiante estudiante = new Estudiante();
+		Estudiante estu = new Estudiante();
 
-		estudiante.setNombre("Christian");
-		estudiante.setApellido("Betancourt");
-		estudiante.setJobby("Jugar");
-		this.estudianteService.crear(estudiante);
+		estu.setNombre("Christian");
+		estu.setApellido("Betancourt");
+		estu.setJobby("Jugar");
+		estu.setCedula("123786890");
+		//this.estudianteService.insertar(estu);
+		this.estudianteService.seleccionar("123786890");
+		estu.setApellido("Boada");
+		estu.setNombre("David");
+		estu.setJobby("basquet");
+		this.estudianteService.modificar(estu);
+		
+		this.estudianteService.eliminar("12378689790");
+		
+		
+		
+			
 	}
 }

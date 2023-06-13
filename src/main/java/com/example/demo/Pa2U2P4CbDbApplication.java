@@ -27,14 +27,16 @@ public class Pa2U2P4CbDbApplication implements CommandLineRunner {
 		estu.setApellido("Betancourt");
 		estu.setJobby("Jugar");
 		estu.setCedula("123786890");
-		//this.estudianteService.insertar(estu);
-		this.estudianteService.seleccionar("123786890");
+			
+		this.estudianteService.insertar(estu);
+		/*this.estudianteService.seleccionar("123786890");
 		estu.setApellido("Boada");
 		estu.setNombre("David");
 		estu.setJobby("basquet");
 		this.estudianteService.modificar(estu);
 		
 		this.estudianteService.eliminar("12378689790");
+		*/
 		
 		
 		

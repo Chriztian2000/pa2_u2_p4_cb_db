@@ -14,7 +14,7 @@ import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
 
 
-@Table(name= "ctaBancaria")
+@Table(name= "cta_bancaria")
 @Entity
 public class CtaBancaria {
 	

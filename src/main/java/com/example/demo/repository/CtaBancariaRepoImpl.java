@@ -18,7 +18,13 @@ public class CtaBancariaRepoImpl implements CtaBancariaRepo {
 	@Override
 	public void insertar(CtaBancaria ctaBancaria) {
 		this.entityManager.persist(ctaBancaria);
+		
+	}
 
+	@Override
+	public void actualizar(CtaBancaria ctaBancaria) {
+		this.entityManager.merge(ctaBancaria);
+		
 	}
 
 	@Override
@@ -27,11 +33,12 @@ public class CtaBancariaRepoImpl implements CtaBancariaRepo {
 		return this.entityManager.find(CtaBancaria.class, id);
 	}
 
-
 	@Override
-	public void modificar(Integer id) {
-		// TODO Auto-generated method stub
-		this.entityManager.merge(id);
+	public void eliminar(Integer id) {
+		this.entityManager.remove(id);
+		
 	}
+
+	
 
 }

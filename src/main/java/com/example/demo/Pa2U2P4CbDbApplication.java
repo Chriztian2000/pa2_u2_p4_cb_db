@@ -14,8 +14,7 @@ import com.example.demo.service.CtaBancariaService;
 @SpringBootApplication
 public class Pa2U2P4CbDbApplication implements CommandLineRunner {
 
-	@Autowired
-	private CtaBancariaService ctabancariaService;
+
 	
 	public static void main(String[] args) {
 		SpringApplication.run(Pa2U2P4CbDbApplication.class, args);
@@ -25,17 +24,7 @@ public class Pa2U2P4CbDbApplication implements CommandLineRunner {
 	public void run(String... args) throws Exception {
 
 		
-		CtaBancaria cta1 = new CtaBancaria();
-		cta1.setCedulaPropietario("1720030723");
-		cta1.setEapertura(LocalDate.now());
-		cta1.setEapertura(LocalDate.of(2023,6,16));
-		cta1.setNumero("2205487897");
-		cta1.setSaldo(new BigDecimal(500));
-		cta1.setTipo("A");
-		
-		//this.ctabancariaService.apertura(cta1);
-		this.ctabancariaService.calculo(5, cta1.getSaldo());
-		
+	
 			
 	}
 }

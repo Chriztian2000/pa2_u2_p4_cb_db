@@ -14,7 +14,6 @@ public class CtaBancariaServiceImpl implements CtaBancariaService {
 
 	@Autowired
 	private CtaBancariaRepo ctabancariaRepo;
-
 	
 
 	@Override

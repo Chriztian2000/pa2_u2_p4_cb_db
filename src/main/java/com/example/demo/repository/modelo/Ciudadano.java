@@ -1,5 +1,6 @@
 package com.example.demo.repository.modelo;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -35,6 +36,14 @@ public class Ciudadano {
 	@OneToOne(mappedBy = "ciudadano")
 	private Empleado empleado;
 	
+	
+	
+	public Empleado getEmpleado() {
+		return empleado;
+	}
+	public void setEmpleado(Empleado empleado) {
+		this.empleado = empleado;
+	}
 	//set y get
 	public Integer getId() {
 		return id;

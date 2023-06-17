@@ -2,6 +2,7 @@ package com.example.demo.repository.modelo;
 
 import java.math.BigDecimal;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -29,10 +30,21 @@ public class Empleado {
 	@Column(name = "emp_cargo")
 	private String cargo;
 
-	@OneToOne
+	//cascade -> 
+	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "empl_ciudadano_id")
 	private Ciudadano ciudadano;
 	
+	
+	
+	public Ciudadano getCiudadano() {
+		return ciudadano;
+	}
+
+	public void setCiudadano(Ciudadano ciudadano) {
+		this.ciudadano = ciudadano;
+	}
+
 	@Override
 	public String toString() {
 		return "Empleado [sueldo=" + sueldo + ", cargo=" + cargo + ", id=" + id + "]";

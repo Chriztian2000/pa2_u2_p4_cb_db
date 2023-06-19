@@ -10,7 +10,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import com.example.demo.repository.modelo.Ciudadano;
 import com.example.demo.repository.modelo.Empleado;
 import com.example.demo.service.CiudadanoService;
-import com.example.demo.service.IEmpleadoService;
+import com.example.demo.service.EmpleadoService;
 
 @SpringBootApplication
 public class Pa2U2P4CbDbApplication implements CommandLineRunner {
@@ -20,7 +20,7 @@ public class Pa2U2P4CbDbApplication implements CommandLineRunner {
 	private CiudadanoService ciudadanoService;
 
 	@Autowired
-	private IEmpleadoService empleadoService;
+	private EmpleadoService empleadoService;
 
 	public static void main(String[] args) {
 		SpringApplication.run(Pa2U2P4CbDbApplication.class, args);
@@ -29,27 +29,27 @@ public class Pa2U2P4CbDbApplication implements CommandLineRunner {
 	@Override
 	public void run(String... args) throws Exception {
 
-		Ciudadano ciu = new Ciudadano();
-		Empleado emple = new Empleado();
-
-		ciu.setNombre("Christian");
-		ciu.setApellido("Betancourt");
-		ciu.setCedula("1722781000");
-		// this.ciudadanoService.insertar(ciu);
-
-		emple.setCargo("cajero");
-		emple.setSueldo(new BigDecimal(2000));
-		//emple.setCiudadano(ciu);
-
-		this.empleadoService.ingresar(emple);
-
-		Ciudadano ciu2 = new Ciudadano();
-
-		ciu2.setApellido("Boada");
-		ciu2.setNombre("David");
-		ciu2.setCedula("123456789");
-
-		//this.ciudadanoService.insertar(ciu2);
+		Ciudadano ciudadano = new Ciudadano();
+		ciudadano.setNombre("Christian");
+		ciudadano.setApellido("Betancourt");
+		ciudadano.setCedula("1722781000");
+		
+		Ciudadano ciudadano1 = new Ciudadano();
+		ciudadano1.setNombre("David");
+		ciudadano1.setApellido("Boada");
+		ciudadano1.setCedula("123456789");
+		
+		Empleado empleado = new Empleado();
+		empleado.setCiudadano(ciudadano1);
+		empleado.setCargo("Gerente");
+		empleado.setSueldo(new BigDecimal(2000));
+		//ciudadano.setEmpleado(empleado);
+		/*this.ciudadanoService.agregar(ciudadano);
+		this.ciudadanoService.encontrar(1);
+		this.ciudadanoService.borrar(2);
+		this.ciudadanoService.modificar(ciudadano);*/
+		this.empleadoService.ingresar(empleado);
+        this.ciudadanoService.insertar(ciudadano);
 
 	}
 }

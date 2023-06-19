@@ -3,14 +3,14 @@ package com.example.demo.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.example.demo.repository.IEmpleadoRepo;
+import com.example.demo.repository.EmpleadoRepo;
 import com.example.demo.repository.modelo.Empleado;
 
 @Service
-public class EmpleadoServiceImpl implements IEmpleadoService{
+public class EmpleadoServiceImpl implements EmpleadoService{
 	
 	@Autowired
-	private IEmpleadoRepo empleadoRepo;
+	private EmpleadoRepo empleadoRepo;
 
 	@Override
 	public void ingresar(Empleado empleado) {

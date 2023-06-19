@@ -2,7 +2,7 @@ package com.example.demo.repository;
 
 import com.example.demo.repository.modelo.Empleado;
 
-public interface IEmpleadoRepo {
+public interface EmpleadoRepo {
 	
 	public void insertar(Empleado empleado);
 	

@@ -2,7 +2,7 @@ package com.example.demo.repository;
 
 import org.springframework.stereotype.Repository;
 
-import com.example.demo.repository.modelo.Empleado;
+import com.example.demo.repository.modelo.Hotel;
 
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
@@ -10,28 +10,27 @@ import jakarta.transaction.Transactional;
 
 @Repository
 @Transactional
-public class EmpleadoRepoImpl implements EmpleadoRepo {
+public class HotelRepoImpl implements HotelRepo {
 	
 	@PersistenceContext
 	private EntityManager entityManager;
-	
 
 	@Override
-	public void insertar(Empleado empleado) {
-		this.entityManager.persist(empleado);
+	public void insertar(Hotel hotel) {
+		this.entityManager.persist(hotel);
 		
 	}
 
 	@Override
-	public void actualizar(Empleado empleado) {
-	this.entityManager.merge(empleado);
+	public void actualizar(Hotel hotel) {
+	this.entityManager.merge(hotel);
 		
 	}
 
 	@Override
-	public Empleado buscar(Integer id) {
-		// TODO Auto-generated method stub
-		return this.entityManager.find(Empleado.class, id);
+	public Hotel buscar(Integer id) {
+		
+		return this.entityManager.find(Hotel.class, id);
 	}
 
 	@Override
@@ -39,6 +38,5 @@ public class EmpleadoRepoImpl implements EmpleadoRepo {
 		this.entityManager.remove(id);
 		
 	}
-	
 
 }

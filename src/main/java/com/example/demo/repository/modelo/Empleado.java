@@ -34,23 +34,15 @@ public class Empleado {
 	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "empl_ciudadano_id")
 	private Ciudadano ciudadano;
-	
-	
-	
-	public Ciudadano getCiudadano() {
-		return ciudadano;
+
+	public Integer getId() {
+		return id;
 	}
 
-	public void setCiudadano(Ciudadano ciudadano) {
-		this.ciudadano = ciudadano;
+	public void setId(Integer id) {
+		this.id = id;
 	}
 
-	@Override
-	public String toString() {
-		return "Empleado [sueldo=" + sueldo + ", cargo=" + cargo + ", id=" + id + "]";
-	}
-
-	// set get
 	public BigDecimal getSueldo() {
 		return sueldo;
 	}
@@ -67,12 +59,19 @@ public class Empleado {
 		this.cargo = cargo;
 	}
 
-	public Integer getId() {
-		return id;
+	public Ciudadano getCiudadano() {
+		return ciudadano;
 	}
 
-	public void setId(Integer id) {
-		this.id = id;
+	public void setCiudadano(Ciudadano ciudadano) {
+		this.ciudadano = ciudadano;
 	}
 
+	@Override
+	public String toString() {
+		return "Empleado [id=" + id + ", sueldo=" + sueldo + ", cargo=" + cargo + ", ciudadano=" + ciudadano + "]";
+	}
+	
+	
+	
 }

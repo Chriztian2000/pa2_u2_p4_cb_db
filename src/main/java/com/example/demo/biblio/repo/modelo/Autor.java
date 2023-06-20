@@ -2,6 +2,7 @@ package com.example.demo.biblio.repo.modelo;
 
 import java.util.Set;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -11,28 +12,28 @@ import jakarta.persistence.ManyToMany;
 import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
 
-@Table(name ="autor")
+@Table(name = "autor")
 @Entity
 public class Autor {
+
 	
 
+	@Column(name = "auto_nom")
+	private String nombre;
+
+	@Column(name = "auto_ape")
+	private String apellid;
+
+	@Id
 	@GeneratedValue(generator = "seq_autor", strategy = GenerationType.SEQUENCE)
 	// nombre generador secuencia nombre incremento
 	@SequenceGenerator(name = "seq_autor", sequenceName = "seq_autor", allocationSize = 1)
-	
-	@Column(name="auto_nom")
-	private String nombre;
-	
-	@Column(name="auto_ape")
-	private String apellid;
-	
-	@Id
-	@Column(name="auto_id")
+	@Column(name = "auto_id")
 	private Integer id;
-	
+
 	// SET represeantacion de un conjunto
-	
-	@ManyToMany(mappedBy = "autores")
+
+	@ManyToMany(mappedBy = "autores", cascade = CascadeType.ALL)
 	private Set<Libro> Libros;
 
 	public String getNombre() {
@@ -71,10 +72,5 @@ public class Autor {
 	public String toString() {
 		return "Autor [nombre=" + nombre + ", apellid=" + apellid + ", id=" + id + ", Libros=" + Libros + "]";
 	}
-	
-	
-	
-	
-	
 
 }

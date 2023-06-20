@@ -1,14 +1,17 @@
 package com.example.demo;
 
-import java.math.BigDecimal;
+import java.util.HashSet;
+import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-import com.example.demo.repository.modelo.Ciudadano;
-import com.example.demo.repository.modelo.Empleado;
+import com.example.demo.biblio.repo.modelo.Autor;
+import com.example.demo.biblio.repo.modelo.Libro;
+import com.example.demo.biblio.service.IAutorService;
+import com.example.demo.biblio.service.ILibroService;
 import com.example.demo.service.CiudadanoService;
 import com.example.demo.service.HabitacionService;
 import com.example.demo.service.HotelService;
@@ -24,6 +27,12 @@ public class Pa2U2P4CbDbApplication implements CommandLineRunner {
 
 	@Autowired
 	private CiudadanoService ciudadanoService;
+
+	@Autowired
+	private IAutorService autorService;
+
+	@Autowired
+	private ILibroService iLibroService;
 
 	public static void main(String[] args) {
 		SpringApplication.run(Pa2U2P4CbDbApplication.class, args);
@@ -53,21 +62,31 @@ public class Pa2U2P4CbDbApplication implements CommandLineRunner {
 		 * this.hotelService.actualizar(hote1);
 		 */
 
-		Ciudadano ciu1 = new Ciudadano();
+		Set<Autor> autorSetList = new HashSet<>();
 
-		ciu1.setApellido("Boada");
-		ciu1.setCedula("1720030723");
-		ciu1.setNombre("David");
+		Set<Libro> libroSetList = new HashSet<>();
 
-		Empleado empl1 = new Empleado();
+		Autor autor = new Autor();
 
-		empl1.setCargo("Secretario");
-		empl1.setCiudadano(ciu1);
-		empl1.setSueldo(new BigDecimal(500));
+		autor.setNombre("Charles");
 
-		ciu1.setEmpleado(empl1);
+		autor.setApellid("Bukowsky");
 
-		this.ciudadanoService.insertar(ciu1);
+		autorSetList.add(autor);
+
+		autor.setLibros(libroSetList);
+
+		Libro libro = new Libro();
+
+		libro.setTitulo("historias agonicas");
+
+		libro.setEditorial("Bermeu");
+
+		libroSetList.add(libro);
+
+		libro.setAutores(autorSetList);
+
+		this.autorService.insertar(autor);
 
 	}
 }

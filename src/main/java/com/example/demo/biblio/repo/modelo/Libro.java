@@ -16,10 +16,7 @@ import jakarta.persistence.Table;
 @Table(name = "libro")
 @Entity
 public class Libro {
-	@GeneratedValue(generator = "seq_libro", strategy = GenerationType.SEQUENCE)
-	// nombre generador secuencia nombre incremento
-	@SequenceGenerator(name = "seq_libro", sequenceName = "seq_libro", allocationSize = 1)
-
+	
 	@Column(name = "lib_titulo")
 	private String titulo;
 	
@@ -27,6 +24,10 @@ public class Libro {
 	private String editorial;
 	
 	@Id
+	@GeneratedValue(generator = "seq_libro", strategy = GenerationType.SEQUENCE)
+	// nombre generador secuencia nombre incremento
+	@SequenceGenerator(name = "seq_libro", sequenceName = "seq_libro", allocationSize = 1)
+
 	@Column(name = "lib_id")
 	private Integer id;
 

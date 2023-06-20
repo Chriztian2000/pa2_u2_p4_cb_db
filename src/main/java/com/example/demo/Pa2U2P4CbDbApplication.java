@@ -37,8 +37,8 @@ public class Pa2U2P4CbDbApplication implements CommandLineRunner {
 		List<Habitacion> habitaciones = new ArrayList<>();
 
 		Hotel hote1 = new Hotel();
-		hote1.setNombre("Necochea");
-		hote1.setDireccion("Los Dos Puentes");
+		hote1.setNombre("Quito");
+		hote1.setDireccion("Gonzales Suarez");
 
 		Habitacion habi1 = new Habitacion();
 		habi1.setNumero("1A");

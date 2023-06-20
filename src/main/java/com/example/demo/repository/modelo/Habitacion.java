@@ -20,8 +20,7 @@ public class Habitacion {
 
 	@Id
 	@SequenceGenerator(name = "seq_habitacion",sequenceName = "seq_habitacion",allocationSize = 1)
-	@GeneratedValue(generator = "seq_habitacion",strategy = GenerationType.SEQUENCE)
-	
+	@GeneratedValue(generator = "seq_habitacion",strategy = GenerationType.SEQUENCE)	
 	@Column(name="hab_id")
 	private Integer id;
 	

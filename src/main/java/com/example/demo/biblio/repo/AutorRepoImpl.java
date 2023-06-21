@@ -28,8 +28,7 @@ public class AutorRepoImpl implements IAutorRepo {
 	}
 
 	@Override
-	public Autor buscar(Integer id) {
-		
+	public Autor buscar(Integer id) {		
 		return this.entityManager.find(Autor.class, id);
 	}
 

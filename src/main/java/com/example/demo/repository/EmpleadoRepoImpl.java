@@ -36,7 +36,7 @@ public class EmpleadoRepoImpl implements EmpleadoRepo {
 
 	@Override
 	public void eliminar(Integer id) {
-		this.entityManager.remove(id);
+		this.entityManager.remove(this.buscar(id));
 		
 	}
 	

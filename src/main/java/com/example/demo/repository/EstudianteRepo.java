@@ -29,7 +29,7 @@ public interface EstudianteRepo {
 	
 	
 	
-	//public Estudiante seleccionarporApellidoCriteriaApiQuery (String apellido);
+	public Estudiante seleccionarporApellidoCriteriaApiQuery (String apellido);
 	
 	
 }

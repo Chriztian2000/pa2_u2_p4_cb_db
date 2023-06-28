@@ -12,6 +12,7 @@ import jakarta.persistence.Query;
 import jakarta.persistence.TypedQuery;
 import jakarta.persistence.criteria.CriteriaBuilder;
 import jakarta.persistence.criteria.CriteriaQuery;
+import jakarta.persistence.criteria.Predicate;
 import jakarta.persistence.criteria.Root;
 import jakarta.transaction.Transactional;
 
@@ -138,7 +139,7 @@ public class EstudianteRepoImpl implements EstudianteRepo {
 
 	}
 
-/*
+
 	
 	@Override
 	public Estudiante seleccionarporApellidoCriteriaApiQuery(String apellido) {
@@ -149,9 +150,21 @@ public class EstudianteRepoImpl implements EstudianteRepo {
 		//0 Empezamos oa crear el SQL
 		//2.3 Definimos el FROM (root)
 		Root<Estudiante> miTablaFrom=myCriteriaQuery.from(Estudiante.class);
+		//3. construir la condiciones de mi sql 
+		//	las condiciones se les conoce como predicados
+		//	cada condicion es un predicado
+		// 	para constrir esa condicion 
+		
+		Predicate condicionApellido = myBuilder.equal(miTablaFrom.get("apellido"), apellido);
+		
+		// 4. armar todo el sql final
+		myCriteriaQuery.select(miTablaFrom).where(condicionApellido);
+		
+		TypedQuery<Estudiante>myQueryfinal = this.entityManager.createQuery(myCriteriaQuery);
 		
 		
-		return null;
-	}*/
+		//5. ejecucion de query lo realizamos con typedquery
+		return myQueryfinal.getSingleResult();
+	}
 
 }

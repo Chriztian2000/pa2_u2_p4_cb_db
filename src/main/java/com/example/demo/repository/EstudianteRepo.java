@@ -16,4 +16,20 @@ public interface EstudianteRepo {
 	public List<Estudiante> seleccionarListaPorApellido(String apellido);
 	
 	public Estudiante seleccionarporApellidoNamed (String apellido);
+	
+	public Estudiante seleccionarporApellidoNamedQuery (String apellido);
+
+	public Estudiante seleccionarPorApellidoNativeQuery(String apellido);
+	
+	public Estudiante seleccionarPorApellidoNativeQueryNamed(String apellido);
+	
+	
+	public Estudiante seleccionarporNombreNamedQuery (String nombre);
+	public Estudiante seleccionarPorNombreNativeQueryNamed(String nombre);
+	
+	
+	
+	//public Estudiante seleccionarporApellidoCriteriaApiQuery (String apellido);
+	
+	
 }

@@ -53,18 +53,22 @@ public class Pa2U2P4CbDbApplication implements CommandLineRunner {
 	
 	
 		Estudiante estu = new Estudiante();
-		estu.setApellido("Sanchez");
-		estu.setNombre("Pepito");
-		estu.setCedula("987654321");
-		estu.setJobby("beber");
+		estu.setApellido("Baoda");
+		estu.setNombre("Jyuan");
+		estu.setCedula("123456789");
+		estu.setJobby("tomar");
 		
-		Ciudadano ciu=new Ciudadano();
-		ciu.setNombre("davicho");
-		ciu.setApellido("putada");
-		ciu.setCedula("123456789");
 		
-		this.ciudadanoService.insertar(ciu);
-		this.ciudadanoService.eliminar(2);
+		
+		//this.estudianteService.insertar(estu);
+		//System.out.println(this.estudianteService.buscarporApellidoNamedQuery("Baoda"));
+		//System.out.println(this.estudianteService.buscarporApellidoType("Sanchez"));
+		//System.out.println(this.estudianteService.buscarPorApellidoNativeQuery("Baoda"));
+		
+		//System.out.println(this.estudianteService.buscarPorApellidoNativeQueryNamed("Baoda"));
+		//System.out.println(this.estudianteService.buscarPorNombreNativeQueryNamed("Jyuan"));
+		System.out.println(this.estudianteService.buscarporNombreNamedQuery("Pepito"));
+		//this.ciudadanoService.eliminar(2);
 		
 	//this.estudianteService.insertar(estu);
 		

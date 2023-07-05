@@ -126,7 +126,7 @@ public class EstudianteRepoImpl implements EstudianteRepo {
 		Query myQuery = this.entityManager.createNamedQuery("Estudiante.buscaPorNombre");
 		myQuery.setParameter("datoNombre", nombre);
 		return (Estudiante) myQuery.getSingleResult();
-	
+
 	}
 
 	@Override
@@ -139,32 +139,91 @@ public class EstudianteRepoImpl implements EstudianteRepo {
 
 	}
 
-
-	
 	@Override
 	public Estudiante seleccionarporApellidoCriteriaApiQuery(String apellido) {
 		CriteriaBuilder myBuilder = this.entityManager.getCriteriaBuilder();
-		
-		//1.Especificar el tipo que tiene mi query
-		CriteriaQuery<Estudiante> myCriteriaQuery=myBuilder.createQuery(Estudiante.class);
-		//0 Empezamos oa crear el SQL
-		//2.3 Definimos el FROM (root)
-		Root<Estudiante> miTablaFrom=myCriteriaQuery.from(Estudiante.class);
-		//3. construir la condiciones de mi sql 
-		//	las condiciones se les conoce como predicados
-		//	cada condicion es un predicado
-		// 	para constrir esa condicion 
-		
+
+		// 1.Especificar el tipo que tiene mi query
+		CriteriaQuery<Estudiante> myCriteriaQuery = myBuilder.createQuery(Estudiante.class);
+		// 0 Empezamos oa crear el SQL
+		// 2.3 Definimos el FROM (root)
+		Root<Estudiante> miTablaFrom = myCriteriaQuery.from(Estudiante.class);
+		// 3. construir la condiciones de mi sql
+		// las condiciones se les conoce como predicados
+		// cada condicion es un predicado
+		// para constrir esa condicion
+
 		Predicate condicionApellido = myBuilder.equal(miTablaFrom.get("apellido"), apellido);
-		
+
 		// 4. armar todo el sql final
 		myCriteriaQuery.select(miTablaFrom).where(condicionApellido);
-		
-		TypedQuery<Estudiante>myQueryfinal = this.entityManager.createQuery(myCriteriaQuery);
-		
-		
-		//5. ejecucion de query lo realizamos con typedquery
+
+		TypedQuery<Estudiante> myQueryfinal = this.entityManager.createQuery(myCriteriaQuery);
+
+		// 5. ejecucion de query lo realizamos con typedquery
 		return myQueryfinal.getSingleResult();
+	}
+
+	@Override
+	// forma de busqueda mesclada en la misma entidad
+	public Estudiante seleccionarEstudianteDinamico(String nombre, String apellido, Double peso) {
+
+		// 0. declarar un costructor
+		CriteriaBuilder myBuilder = this.entityManager.getCriteriaBuilder();
+		// 1. especificar el tipo de retorno que tiene un query
+		CriteriaQuery<Estudiante> myCriteriaQuery = myBuilder.createQuery(Estudiante.class);
+
+		Root<Estudiante> miTablaFrom = myCriteriaQuery.from(Estudiante.class);
+
+		// 3.contruye las condiciones
+		// peso > 100 e.nombre =? and e.apellido=?
+		// peso <= 100 e.nombre =? or e.apellido=?
+
+		Predicate pNombre = myBuilder.equal(miTablaFrom.get("nombre"), nombre);
+
+		Predicate pApellido = myBuilder.equal(miTablaFrom.get("apellido"), apellido);
+
+		Predicate predicadoFinal = null;
+
+		// se contruye en funcion de una condicion
+		if (peso.compareTo(Double.valueOf(100)) <= 0) {
+			predicadoFinal = myBuilder.or(pNombre, pApellido);
+
+		} else {
+			predicadoFinal = myBuilder.and(pNombre, pApellido);
+		}
+
+		// 4. armar todo el sql final
+		myCriteriaQuery.select(miTablaFrom).where(predicadoFinal);
+
+		TypedQuery<Estudiante> myQueryfinal = this.entityManager.createQuery(myCriteriaQuery);
+
+		// 5. ejecucion de query lo realizamos con typedquery
+		return myQueryfinal.getSingleResult();
+
+	}
+
+	@Override
+	public int eliminarPorNombre(String nombre) {
+		// DELETE FROM estudiante WHERE estu_nombre = ?
+		// DELETE FROM estudiante e WHERE e.nombre = :datoNombre
+		Query myQuery = this.entityManager.createQuery("DELETE FROM Estudiante e WHERE e.nombre = :datoNombre");
+		myQuery.setParameter("datoNombre", nombre);
+		return myQuery.executeUpdate();
+	}
+
+	@Override
+	
+	// en atributo int nos indica o retoirna el numero de registros que son modificados en la base
+	public int actualizarPorApellido(String nombre, String apellido) {
+		
+		// UPDATE estudiante SET estu_nombre = ? WHERE estu_apellido = ?
+		// UPDATE estudainte e SET e.nombre=:datoNombre WHERE e.apellido = :datoApellido
+		Query myQuery = this.entityManager.createQuery("UPDATE Estudiante e SET e.nombre=:datoNombre WHERE e.apellido = :datoApellido");
+		myQuery.setParameter("datoNombre", nombre);
+		myQuery.setParameter("datoApellido", apellido);
+		return myQuery.executeUpdate();
+
 	}
 
 }

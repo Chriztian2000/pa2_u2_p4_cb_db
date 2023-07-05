@@ -28,4 +28,9 @@ public interface EstudianteService {
 
 	public Estudiante seleccionarporApellidoCriteriaApiQuery (String apellido);
 	
+	
+	public Estudiante buscarEstudianteDinamico(String nombre, String apellido, Double peso);
+	
+	public int borrarPorNombre(String nombre);
+	public int modificarPorApellido(String nombre,String apellido);
 }

@@ -49,10 +49,16 @@ public class Estudiante {
 	@Column(name = "estu_apellido")
 	private String apellido;
 
-	@Column(name = "estu_jobby")
-	private String jobby;
+	@Column(name = "estu_peso")
+	private Double peso;
 
-	// get y set
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
 
 	public String getCedula() {
 		return cedula;
@@ -78,18 +84,20 @@ public class Estudiante {
 		this.apellido = apellido;
 	}
 
-	public String getJobby() {
-		return jobby;
+	public Double getPeso() {
+		return peso;
 	}
 
-	public void setJobby(String jobby) {
-		this.jobby = jobby;
+	public void setPeso(Double peso) {
+		this.peso = peso;
 	}
 
 	@Override
 	public String toString() {
-		return "Estudiante [nombre=" + nombre + ", apellido=" + apellido + ", jobby=" + jobby + ", cedula=" + cedula
-				+ "]";
+		return "Estudiante [id=" + id + ", cedula=" + cedula + ", nombre=" + nombre + ", apellido=" + apellido
+				+ ", peso=" + peso + "]";
 	}
 
+	
+	
 }

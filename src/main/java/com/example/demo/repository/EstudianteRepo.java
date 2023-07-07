@@ -41,12 +41,9 @@ public interface EstudianteRepo {
 	public int actualizarPorApellido(String nombre, String apellido);
 
 	// deber
-	public int eliminarPorEdad(Integer edad);
+	public int eliminarPorPeso(Double peso);
 
 	// desde una edad se cambia el establecimiento
-	public int actualizarPorEdad(String establecimiento, Integer edad);
-
-	// deber
-	public Estudiante seleccionarEstudianteEdadDinamico(String nombre, String apellido, Integer edad);
+	public int actualizarPorPeso(String apellido, Double peso);
 
 }

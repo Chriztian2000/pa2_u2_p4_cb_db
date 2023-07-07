@@ -17,14 +17,13 @@ import jakarta.persistence.Table;
 
 @NamedQueries({
 		@NamedQuery(name = "Estudiante.buscaPorApellido", query = "SELECT e FROM Estudiante  e WHERE e.apellido = :datoApellido"),
-		@NamedQuery(name = "Estudiante.buscaPorNombre", query = "SELECT e FROM Estudiante e WHERE e.nombre = :datoNombre")})
-		//@NamedQuery(name = "Estudiante.buscaPorNombre", query = "SELECT e FROM Estudiante  e WHERE e.nombre = :datoNombre") })
+		@NamedQuery(name = "Estudiante.buscaPorNombre", query = "SELECT e FROM Estudiante e WHERE e.nombre = :datoNombre") })
+// @NamedQuery(name = "Estudiante.buscaPorNombre", query = "SELECT e FROM
+// Estudiante e WHERE e.nombre = :datoNombre") })
 
 @NamedNativeQueries({
-	@NamedNativeQuery(name = "Estudiante.buscarPorApellidoNative", query = "SELECT * FROM estudiante WHERE estu_apellido = :datoApellido", resultClass = Estudiante.class),
-	@NamedNativeQuery(name = "Estudiante.buscarPorNombreNative", query = "SELECT * FROM estudiante WHERE estu_nombre = :datoNombre", resultClass = Estudiante.class)
-})
-
+		@NamedNativeQuery(name = "Estudiante.buscarPorApellidoNative", query = "SELECT * FROM estudiante WHERE estu_apellido = :datoApellido", resultClass = Estudiante.class),
+		@NamedNativeQuery(name = "Estudiante.buscarPorNombreNative", query = "SELECT * FROM estudiante WHERE estu_nombre = :datoNombre", resultClass = Estudiante.class) })
 
 public class Estudiante {
 
@@ -51,98 +50,62 @@ public class Estudiante {
 
 	@Column(name = "estu_peso")
 	private Double peso;
-	
-	
+
 	@Column(name = "estu_edad")
 	private Integer edad;
-	
-
-	@Column(name = "estu_establecimiento")
-	private String establecimiento;
-
 
 	public Integer getId() {
 		return id;
 	}
 
-
 	public void setId(Integer id) {
 		this.id = id;
 	}
-
 
 	public String getCedula() {
 		return cedula;
 	}
 
-
 	public void setCedula(String cedula) {
 		this.cedula = cedula;
 	}
-
 
 	public String getNombre() {
 		return nombre;
 	}
 
-
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
-
 
 	public String getApellido() {
 		return apellido;
 	}
 
-
 	public void setApellido(String apellido) {
 		this.apellido = apellido;
 	}
-
 
 	public Double getPeso() {
 		return peso;
 	}
 
-
 	public void setPeso(Double peso) {
 		this.peso = peso;
 	}
-
 
 	public Integer getEdad() {
 		return edad;
 	}
 
-
 	public void setEdad(Integer edad) {
 		this.edad = edad;
 	}
 
-
-	public String getEstablecimiento() {
-		return establecimiento;
-	}
-
-
-	public void setEstablecimiento(String establecimiento) {
-		this.establecimiento = establecimiento;
-	}
-
-
 	@Override
 	public String toString() {
 		return "Estudiante [id=" + id + ", cedula=" + cedula + ", nombre=" + nombre + ", apellido=" + apellido
-				+ ", peso=" + peso + ", edad=" + edad + ", establecimiento=" + establecimiento + "]";
+				+ ", peso=" + peso + ", edad=" + edad + ", establecimiento=" + "]";
 	}
-	
-	
-	
-	
-	
-	
 
-	
-	
 }

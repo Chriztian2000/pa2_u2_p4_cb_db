@@ -228,58 +228,23 @@ public class EstudianteRepoImpl implements EstudianteRepo {
 	
 	
 	@Override
-	public int eliminarPorEdad(Integer edad) {
+	public int eliminarPorPeso(Double peso) {
 		// DELETE FROM estudiante WHERE estu_nombre = ?
 		// DELETE FROM estudiante e WHERE e.nombre = :datoNombre
 		Query myQuery = this.entityManager.createQuery("DELETE FROM Estudiante e WHERE e.edad = :datoEdad");
-		myQuery.setParameter("datoEdad", edad);
+		myQuery.setParameter("datoEdad", peso);
 		return myQuery.executeUpdate();
 	}
 
 	@Override
-	public int actualizarPorEdad(String establecimiento, Integer edad) {
+	public int actualizarPorPeso(String apellido,Double peso) {
 		
-		Query myQuery = this.entityManager.createQuery("UPDATE Estudiante e SET e.establecimiento=:datoEstablecimiento WHERE e.edad = :datoEdad");
-		myQuery.setParameter("datoEstablecimiento", establecimiento);
-		myQuery.setParameter("datoEdad", edad);
+		Query myQuery = this.entityManager.createQuery("UPDATE Estudiante e SET e.apellido=:datoApellido WHERE e.peso = :datoPeso");
+		myQuery.setParameter("datoApellido", apellido);
+		myQuery.setParameter("datoPeso", peso);
 		return myQuery.executeUpdate();
 	}
 	
-	public Estudiante seleccionarEstudianteEdadDinamico(String nombre, String apellido, Integer edad) {
 
-		// 0. declarar un costructor
-		CriteriaBuilder myBuilder = this.entityManager.getCriteriaBuilder();
-		// 1. especificar el tipo de retorno que tiene un query
-		CriteriaQuery<Estudiante> myCriteriaQuery = myBuilder.createQuery(Estudiante.class);
-
-		Root<Estudiante> miTablaFrom = myCriteriaQuery.from(Estudiante.class);
-
-		// 3.contruye las condiciones
-		// peso > 100 e.nombre =? and e.apellido=?
-		// peso <= 100 e.nombre =? or e.apellido=?
-
-		Predicate pNombre = myBuilder.equal(miTablaFrom.get("nombre"), nombre);
-
-		Predicate pApellido = myBuilder.equal(miTablaFrom.get("apellido"), apellido);
-
-		Predicate predicadoFinal = null;
-
-		// se contruye en funcion de una condicion
-		if (edad >= 10) {
-			predicadoFinal = myBuilder.or(pNombre, pApellido);
-
-		} else {
-			predicadoFinal = myBuilder.and(pNombre, pApellido);
-		}
-
-		// 4. armar todo el sql final
-		myCriteriaQuery.select(miTablaFrom).where(predicadoFinal);
-
-		TypedQuery<Estudiante> myQueryfinal = this.entityManager.createQuery(myCriteriaQuery);
-
-		// 5. ejecucion de query lo realizamos con typedquery
-		return myQueryfinal.getSingleResult();
-
-	}
 
 }

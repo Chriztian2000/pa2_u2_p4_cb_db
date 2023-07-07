@@ -38,11 +38,10 @@ public interface EstudianteService {
 	public int modificarPorApellido(String nombre, String apellido);
 
 	// deber
-	public int borrarPorEdad(Integer edad);
+	public int borrarPorPeso(Double peso);
 
-	// desde una edad se cambia el establecimiento
-	public int amodificarPorEdad(String establecimiento, Integer edad);
+	// desde una edad se cambia el apellido
+	public int modificarPorpeso(String apellido, Double peso);
 
-	public Estudiante buscarEstudianteEdadDinamico(String nombre, String apellido, Integer edad);
-
+	
 }

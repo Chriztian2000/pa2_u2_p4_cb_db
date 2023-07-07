@@ -110,20 +110,18 @@ public class EstudianteServiceImpl implements EstudianteService {
 	}
 
 	@Override
-	public int borrarPorEdad(Integer edad) {
+	public int borrarPorPeso( Double peso) {
 		// TODO Auto-generated method stub
-		return this.estudianteRepo.eliminarPorEdad(edad);
+		return this.estudianteRepo.eliminarPorPeso(peso);
 	}
 
 	@Override
-	public int amodificarPorEdad(String establecimiento, Integer edad) {
+	public int modificarPorpeso(String apellido, Double peso) {
 		// TODO Auto-generated method stub
-		return this.estudianteRepo.actualizarPorEdad(establecimiento, edad);
+		return this.estudianteRepo.actualizarPorPeso(apellido, peso);
 	}
 
-	@Override
-	public Estudiante buscarEstudianteEdadDinamico(String nombre, String apellido, Integer edad) {
-		// TODO Auto-generated method stub
-		return this.buscarEstudianteEdadDinamico(nombre, apellido, edad);
-	}
+	
+
+
 }

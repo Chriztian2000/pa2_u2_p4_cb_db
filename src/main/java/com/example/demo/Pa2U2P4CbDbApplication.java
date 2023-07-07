@@ -50,28 +50,20 @@ public class Pa2U2P4CbDbApplication implements CommandLineRunner {
 	public void run(String... args) throws Exception {
 
 		Estudiante estu = new Estudiante();
-		estu.setApellido("Boada");
-		estu.setNombre("David");
+		estu.setApellido("Paredes");
+		estu.setNombre("Francisco");
 		estu.setCedula("123456789");
 		estu.setPeso(70.0);
-		estu.setEstablecimiento("Escuela");
 		estu.setEdad(8);
 
-		Estudiante estu1 = new Estudiante();
-		estu1.setApellido("Betancourt");
-		estu1.setNombre("Christian");
-		estu1.setCedula("1722781000");
-		estu1.setPeso(65.0);
-		estu1.setEstablecimiento("Colegio");
-		estu1.setEdad(25);
+	
 
-		// this.estudianteService.insertar(estu);
+		 //this.estudianteService.insertar(estu);
 		// this.estudianteService.insertar(estu1);
 
-		// this.estudianteService.borrarPorEdad(8);
-
-		//this.estudianteService.amodificarPorEdad("Universidad", 25);
+		// this.estudianteService.modificarPorpeso("Salvador", 70.0);
+		 
+		 this.estudianteService.borrarPorPeso(70.0);
 		
-		this.estudianteService.buscarEstudianteEdadDinamico("Christian", "Betancourt", 25);
 	}
 }

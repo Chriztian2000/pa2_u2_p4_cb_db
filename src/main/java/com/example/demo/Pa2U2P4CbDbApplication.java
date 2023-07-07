@@ -70,6 +70,8 @@ public class Pa2U2P4CbDbApplication implements CommandLineRunner {
 
 		// this.estudianteService.borrarPorEdad(8);
 
-		this.estudianteService.amodificarPorEdad("Universidad", 25);
+		//this.estudianteService.amodificarPorEdad("Universidad", 25);
+		
+		this.estudianteService.buscarEstudianteEdadDinamico("Christian", "Betancourt", 25);
 	}
 }

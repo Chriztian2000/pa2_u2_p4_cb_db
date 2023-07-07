@@ -45,8 +45,8 @@ public interface EstudianteRepo {
 
 	// desde una edad se cambia el establecimiento
 	public int actualizarPorEdad(String establecimiento, Integer edad);
-	
-	//deber
-	
+
+	// deber
+	public Estudiante seleccionarEstudianteEdadDinamico(String nombre, String apellido, Integer edad);
 
 }

@@ -120,4 +120,10 @@ public class EstudianteServiceImpl implements EstudianteService {
 		// TODO Auto-generated method stub
 		return this.estudianteRepo.actualizarPorEdad(establecimiento, edad);
 	}
+
+	@Override
+	public Estudiante buscarEstudianteEdadDinamico(String nombre, String apellido, Integer edad) {
+		// TODO Auto-generated method stub
+		return this.buscarEstudianteEdadDinamico(nombre, apellido, edad);
+	}
 }

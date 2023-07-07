@@ -43,4 +43,6 @@ public interface EstudianteService {
 	// desde una edad se cambia el establecimiento
 	public int amodificarPorEdad(String establecimiento, Integer edad);
 
+	public Estudiante buscarEstudianteEdadDinamico(String nombre, String apellido, Integer edad);
+
 }

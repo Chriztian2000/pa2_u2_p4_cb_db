@@ -244,5 +244,42 @@ public class EstudianteRepoImpl implements EstudianteRepo {
 		myQuery.setParameter("datoEdad", edad);
 		return myQuery.executeUpdate();
 	}
+	
+	public Estudiante seleccionarEstudianteEdadDinamico(String nombre, String apellido, Integer edad) {
+
+		// 0. declarar un costructor
+		CriteriaBuilder myBuilder = this.entityManager.getCriteriaBuilder();
+		// 1. especificar el tipo de retorno que tiene un query
+		CriteriaQuery<Estudiante> myCriteriaQuery = myBuilder.createQuery(Estudiante.class);
+
+		Root<Estudiante> miTablaFrom = myCriteriaQuery.from(Estudiante.class);
+
+		// 3.contruye las condiciones
+		// peso > 100 e.nombre =? and e.apellido=?
+		// peso <= 100 e.nombre =? or e.apellido=?
+
+		Predicate pNombre = myBuilder.equal(miTablaFrom.get("nombre"), nombre);
+
+		Predicate pApellido = myBuilder.equal(miTablaFrom.get("apellido"), apellido);
+
+		Predicate predicadoFinal = null;
+
+		// se contruye en funcion de una condicion
+		if (edad >= 10) {
+			predicadoFinal = myBuilder.or(pNombre, pApellido);
+
+		} else {
+			predicadoFinal = myBuilder.and(pNombre, pApellido);
+		}
+
+		// 4. armar todo el sql final
+		myCriteriaQuery.select(miTablaFrom).where(predicadoFinal);
+
+		TypedQuery<Estudiante> myQueryfinal = this.entityManager.createQuery(myCriteriaQuery);
+
+		// 5. ejecucion de query lo realizamos con typedquery
+		return myQueryfinal.getSingleResult();
+
+	}
 
 }

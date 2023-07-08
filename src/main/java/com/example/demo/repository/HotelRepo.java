@@ -8,5 +8,7 @@ public interface HotelRepo {
 	public void actualizar(Hotel hotel);
 	public Hotel buscar(Integer id);
 	public void eliminar(Integer id);
+	
+	
 
 }

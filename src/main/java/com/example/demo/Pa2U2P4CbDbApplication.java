@@ -1,5 +1,7 @@
 package com.example.demo;
 
+import java.math.BigDecimal;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -7,8 +9,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import com.example.demo.biblio.service.IAutorService;
 import com.example.demo.biblio.service.ILibroService;
-import com.example.demo.repository.modelo.Ciudadano;
-import com.example.demo.repository.modelo.Estudiante;
+import com.example.demo.repository.modelo.Habitacion;
+import com.example.demo.repository.modelo.Hotel;
 import com.example.demo.service.CiudadanoService;
 import com.example.demo.service.EmpleadoService;
 import com.example.demo.service.EstudianteService;
@@ -51,7 +53,7 @@ public class Pa2U2P4CbDbApplication implements CommandLineRunner {
 	@Override
 	public void run(String... args) throws Exception {
 	
-	
+	/*
 		Estudiante estu = new Estudiante();
 		estu.setApellido("Boada");
 		estu.setNombre("David");
@@ -67,35 +69,65 @@ public class Pa2U2P4CbDbApplication implements CommandLineRunner {
 		//this.estudianteService.insertar(estu);
 		//this.estudianteService.insertar(estu1);
 			
-		//System.out.println(this.estudianteService.buscarEstudianteDinamico("David", "Boada", 70.0));
-		//System.out.println(this.estudianteService.buscarEstudianteDinamico("Christian", "Betancourt", 65.0));
 		
-		//int estuC1= this.estudianteService.borrarPorNombre("David");
-		//System.out.println(estuC1);
-		
-		int estuC2= this.estudianteService.modificarPorApellido("Alejandro", "Betancourt");
-		System.out.println(estuC2);
-		
-		/*
-		System.out.println(this.estudianteService.modificarPorApellido("Alejandro", "Alban"));
+		System.out.println(this.estudianteService.buscarTodosDTO());
 		*/
 		
-		//this.estudianteService.insertar(estu);
-		//System.out.println(this.estudianteService.buscarporApellidoNamedQuery("Baoda"));
-		//System.out.println(this.estudianteService.buscarporApellidoType("Sanchez"));
-		//System.out.println(this.estudianteService.buscarPorApellidoNativeQuery("Baoda"));
+		/*
+		Alumno alu = new Alumno();
+		alu.setNombre("David");
 		
-		//System.out.println(this.estudianteService.buscarPorApellidoNativeQueryNamed("Baoda"));
-		//System.out.println(this.estudianteService.buscarPorNombreNativeQueryNamed("Jyuan"));
-		//System.out.println(this.estudianteService.buscarporNombreNamedQuery("Pepito"));
-		//this.ciudadanoService.eliminar(2);
+		Materia mate = new Materia();
 		
-	//this.estudianteService.insertar(estu);
-		
-		//this.estudianteService.buscarporApellidoType("Sanchez");
-		
-		
-		
+		mate.setNombre("programacion");
 
+		
+		Matricula matri = new Matricula();
+		matri.setAlumno(alu);
+		matri.setMateria(mate);
+		
+		
+		//this.matriculaService.crear(matri);
+		
+		System.out.println(this.matriculaService.selecionarTodosDTO());
+		
+		*/
+		
+		
+		Hotel hotel = new Hotel();
+		hotel.setNombre("Mariot");
+		hotel.setDireccion("Eloy Alfaro");
+		
+		Habitacion habi = new Habitacion();
+		habi.setNumero("A1");
+		habi.setValor(new BigDecimal(200));
+		habi.setHotel(hotel);
+		
+		
+		Habitacion habi1 = new Habitacion();
+		habi1.setNumero("A2");
+		habi1.setValor(new BigDecimal(300));
+		habi1.setHotel(hotel);
+		
+		Habitacion habi2 = new Habitacion();
+		habi2.setNumero("A3");
+		habi2.setValor(new BigDecimal(400));
+		habi2.setHotel(hotel);
+		
+		
+		hotel.setHabitaciones(habi);
+		hotel.setHabitaciones(habi1);
+		hotel.setHabitaciones(habi2);
+		
+		this.hotelService.crear(hotel);
+		
+		
+		//System.out.println(hotel.getNombre());
+		//System.out.println(this.hotelService.crear(hotel));
+		
+		
+		
+		
+		
 	}
 }

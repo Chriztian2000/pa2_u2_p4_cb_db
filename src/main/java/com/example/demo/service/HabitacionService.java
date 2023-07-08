@@ -1,5 +1,7 @@
 package com.example.demo.service;
 
+import java.util.List;
+
 import com.example.demo.repository.modelo.Habitacion;
 
 public interface HabitacionService {
@@ -9,5 +11,7 @@ public interface HabitacionService {
 	public Habitacion consultar (Integer id);
 	public void eliminar(Integer id);
 
+	
+	public Habitacion seleccionarTodos(String numero);
 
 }

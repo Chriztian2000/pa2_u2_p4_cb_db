@@ -30,7 +30,7 @@ public class Hotel {
 	private String direccion;
 	
 	@OneToMany(mappedBy = "hotel",cascade = CascadeType.ALL)
-	private List<Habitacion> habitaciones;
+	private Habitacion habitaciones;
 	
 	//set y get
 	public Integer getId() {
@@ -51,12 +51,21 @@ public class Hotel {
 	public void setDireccion(String direccion) {
 		this.direccion = direccion;
 	}
-	public List<Habitacion> getHabitaciones() {
+	public Habitacion getHabitaciones() {
 		return habitaciones;
 	}
-	public void setHabitaciones(List<Habitacion> habitaciones) {
+	public void setHabitaciones(Habitacion habitaciones) {
 		this.habitaciones = habitaciones;
 	}
+	
+	
+	@Override
+	public String toString() {
+		return "Hotel [id=" + id + ", nombre=" + nombre + ", direccion=" + direccion + ", habitaciones=" + habitaciones
+				+ "]";
+	}
+	
+	
 
 
 }

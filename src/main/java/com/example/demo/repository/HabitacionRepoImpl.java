@@ -1,8 +1,9 @@
 package com.example.demo.repository;
 
+import java.util.List;
+
 import org.springframework.stereotype.Repository;
 
-import com.example.demo.repository.modelo.Ciudadano;
 import com.example.demo.repository.modelo.Habitacion;
 
 import jakarta.persistence.EntityManager;
@@ -39,5 +40,14 @@ public class HabitacionRepoImpl implements HabitacionRepo {
 		this.entityManager.remove(this.buscar(id));
 		
 	}
+
+	@Override
+	public Habitacion buscarTodos(String numero) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
+
 
 }

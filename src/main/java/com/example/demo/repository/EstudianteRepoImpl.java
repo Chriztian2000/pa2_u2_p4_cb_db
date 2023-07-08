@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.stereotype.Repository;
 
 import com.example.demo.repository.modelo.Estudiante;
+import com.example.demo.repository.modelo.dto.EstudianteDTO;
 
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
@@ -213,17 +214,31 @@ public class EstudianteRepoImpl implements EstudianteRepo {
 	}
 
 	@Override
-	
-	// en atributo int nos indica o retoirna el numero de registros que son modificados en la base
+
+	// en atributo int nos indica o retoirna el numero de registros que son
+	// modificados en la base
 	public int actualizarPorApellido(String nombre, String apellido) {
-		
+
 		// UPDATE estudiante SET estu_nombre = ? WHERE estu_apellido = ?
 		// UPDATE estudainte e SET e.nombre=:datoNombre WHERE e.apellido = :datoApellido
-		Query myQuery = this.entityManager.createQuery("UPDATE Estudiante e SET e.nombre=:datoNombre WHERE e.apellido = :datoApellido");
+		Query myQuery = this.entityManager
+				.createQuery("UPDATE Estudiante e SET e.nombre=:datoNombre WHERE e.apellido = :datoApellido");
 		myQuery.setParameter("datoNombre", nombre);
 		myQuery.setParameter("datoApellido", apellido);
 		return myQuery.executeUpdate();
 
+	}
+
+	@Override
+	public List<EstudianteDTO> selecionarTodosDTO() {
+
+		//
+
+		TypedQuery<EstudianteDTO> myqQuery = this.entityManager.createQuery(
+				"SELECT NEW com.example.demo.repository.modelo.dtp.EstudianteDTO(e.nombre,e.apellido) FROM Estudiante e",
+				EstudianteDTO.class);
+		// TODO Auto-generated method stub
+		return myqQuery.getResultList();
 	}
 
 }

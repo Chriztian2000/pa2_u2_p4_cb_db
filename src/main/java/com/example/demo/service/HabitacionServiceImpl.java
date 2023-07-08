@@ -1,5 +1,7 @@
 package com.example.demo.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -35,6 +37,12 @@ public class HabitacionServiceImpl implements HabitacionService {
 	public void eliminar(Integer id) {
 		
 		this.habitacionRepo.eliminar(id);
+	}
+
+	@Override
+	public Habitacion seleccionarTodos(String numero) {
+		// TODO Auto-generated method stub
+		return this.habitacionRepo.buscarTodos(numero);
 	}
 
 }
